@@ -58,13 +58,13 @@
   color: white;
 }
 
-.left-menu > .sub-menu a {
+.left-menu > .sub-menu ul > li > a {
   text-decoration: none;
   color: white;
   cursor: pointer;
 }
 
-.left-menu > .sub-menu a:hover {
+.left-menu > .sub-menu ul > li > a:hover {
   color: $lwDarkBlueTitle;
 }
 
