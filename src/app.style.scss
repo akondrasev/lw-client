@@ -1,0 +1,19 @@
+@import 'common/common';
+
+.app {
+  height: 100%;
+}
+
+.app .container-flex {
+  display: flex;
+  height: 100%;
+  align-items: stretch;
+}
+
+.app .container-flex .left-menu-container {
+
+}
+
+.app .container-flex .content-container-flex {
+  flex-basis: 100%;
+}

@@ -1,3 +1,5 @@
 # lw-client
 
-npm install && npm run server
+Run demo in browser:
+- npm install
+- npm run server

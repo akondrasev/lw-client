@@ -1,0 +1,80 @@
+@import '../../common/common';
+
+.left-menu {
+  background-color: $lwDarkBlue;
+  border-right: 1px solid $lwDarkBlueDarkBorder;
+  color: white;
+
+  width: 100px;
+  height: 100%;
+}
+
+.left-menu > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.left-menu > ul > li {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  justify-content: center;
+  border-bottom: 1px solid $lwDarkBlueBorder;
+  height: 75px;
+  cursor: pointer;
+
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.left-menu > ul > li:hover {
+  background-color: $lwDarkBlueHover;
+}
+
+.left-menu > ul > li.active {
+  background-color: $lwDarkBlueActive;
+}
+
+.left-menu > ul > li > i {
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+.left-menu > .sub-menu {
+  border: 1px solid $lwDarkBlueLightBorder;
+  border-left: 0;
+
+  background-color: $lwSemiDarkBlue;
+  width: 250px;
+  height: 600px;
+
+  position: absolute;
+  top: 0;
+  left: 100px;
+
+  padding: 25px;
+  color: white;
+}
+
+.left-menu > .sub-menu a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.left-menu > .sub-menu a:hover {
+  color: $lwDarkBlueTitle;
+}
+
+.left-menu > .sub-menu h4 {
+  color: $lwDarkBlueTitle;
+  margin-bottom: 25px;
+}
+
+.left-menu > .sub-menu > .menu-block > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

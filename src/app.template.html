@@ -1,0 +1,14 @@
+<div class="app">
+    <div class="container-flex">
+        <div class="left-menu-container">
+            <navbar items="$ctrl.leftMenu" on-menu-click="$ctrl.openModule(key);"></navbar>
+        </div>
+
+        <div class="content-container-flex">
+            <status-bar></status-bar>
+            <tab-menu opened-tabs="$ctrl.openedTabs"></tab-menu>
+            <ui-view></ui-view>
+        </div>
+    </div>
+
+</div>

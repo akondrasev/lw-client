@@ -1,0 +1,19 @@
+<nav class="left-menu">
+    <ul>
+        <li ng-repeat="item in $ctrl.items" ng-click="$ctrl.selectItem(item); $event.stopPropagation();" ng-class="$ctrl.selectedItem === item ? 'active' : ''">
+            <i ng-if="item.Icon" ng-class="item.Icon"></i>
+            {{item.Text}}
+        </li>
+    </ul>
+
+    <div ng-click="$event.stopPropagation();" class="sub-menu" ng-if="$ctrl.selectedItem">
+        <div class="menu-block" ng-repeat="block in $ctrl.menu">
+            <h4>{{block.Title}}</h4>
+            <ul>
+                <li ng-repeat="item in block.Items">
+                    <a>{{item.Text}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
