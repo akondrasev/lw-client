@@ -7,12 +7,12 @@ const NavigationService = function ($http, $q) {
         {
             Key: "inventory",
             Text: "Inventory",
-            Icon: "glyphicon glyphicon-th-large"
+            Icon: "oi oi-cart"
         },
         {
             Key: "orders-book",
             Text: "Orders Book",
-            Icon: "glyphicon glyphicon-book"
+            Icon: "oi oi-dollar"
         }
     ];
 

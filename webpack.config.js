@@ -25,7 +25,7 @@ module.exports = {
             {test: /\.css$/, loaders: ['style-loader', 'css-loader']},
             {test: /\.less$/, loaders: ['style-loader', 'css-loader', 'less-loader']},
             {
-                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2|otf)$/,
                 loader: 'url-loader',
                 options: {
                     limit: 10000
@@ -56,12 +56,13 @@ module.exports = {
             minChunks: function (module, count) {
                 return module.resource && module.resource.indexOf(path.resolve(__dirname, 'src')) === -1;
             }
-        })
+        }),
 
-        // new webpack.ProvidePlugin({
-        //     $: "jquery",
-        //     jQuery: "jquery",
-        //     "window.jQuery": "jquery"
-        // })
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery",
+            Popper: ['popper.js', 'default']
+        })
     ]
 };

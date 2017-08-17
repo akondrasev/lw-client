@@ -4,7 +4,8 @@ import AppComponent from './app.component';
 import Common from './common/common';
 import Services from './services/services';
 
-import 'bootstrap-webpack';
+import 'bootstrap';
+import 'open-iconic/font/css/open-iconic-bootstrap.css'
 
 angular.module('app', [
     uiRouter,
