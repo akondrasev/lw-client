@@ -17,6 +17,13 @@ angular.module('app', [
     "ngInject";
 
     $compileProvider.debugInfoEnabled(false);
+
+    $stateProvider
+        .state('empty', {
+            url: '/',
+            template: "<div>EMPTY STATE</div>"
+        });
+
     // console.log($compileProvider);
 
     // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions

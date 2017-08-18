@@ -22,6 +22,13 @@ function Controller(navigationService, $transitions) {
         if (module) {
             this.openedTabs.indexOf(module) === -1 && this.openedTabs.push(module);
         }
+    };
+
+    this.closeTab = (tab) => {
+        console.log(tab);
+        this.openedTabs = this.openedTabs.filter(function (item) {
+            return item !== tab;
+        });
     }
 }
 

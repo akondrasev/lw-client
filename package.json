@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node_modules/.bin/webpack --config webpack.config.js --display-reasons --display-chunks",
-    "server": "node_modules/.bin/webpack-dev-server --content-base docs/ --open-page docs --inline --color"
+    "server": "node_modules/.bin/webpack-dev-server --content-base docs/ --open-page docs --inline --color",
+    "production": "node_modules/.bin/webpack production"
   },
   "keywords": [],
   "author": "",

@@ -2,6 +2,10 @@
     <ul>
         <li ui-sref-active="active" ng-repeat="tab in $ctrl.openedTabs">
             <a ui-sref="{{tab.Key}}()">{{tab.Text}}</a>
+
+            <button ng-click="$ctrl.onCloseClick({tab: tab});" ui-sref="empty">
+                <span class="oi oi-x"></span>
+            </button>
         </li>
     </ul>
 </div>

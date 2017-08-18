@@ -6,7 +6,7 @@
 
         <div class="content-container-flex">
             <status-bar></status-bar>
-            <tab-menu opened-tabs="$ctrl.openedTabs"></tab-menu>
+            <tab-menu opened-tabs="$ctrl.openedTabs" on-close-click="$ctrl.closeTab(tab);"></tab-menu>
             <div class="view-content">
                 <ui-view></ui-view>
             </div>

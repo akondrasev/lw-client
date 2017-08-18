@@ -4,7 +4,8 @@ import './tab-menu.style.scss';
 
 const tabMenuComponent = {
     bindings: {
-        openedTabs: "<"
+        openedTabs: "<",
+        onCloseClick: "&"
     },
     template,
     controller
