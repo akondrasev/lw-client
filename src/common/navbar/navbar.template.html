@@ -11,7 +11,7 @@
             <h4>{{block.Title}}</h4>
             <ul>
                 <li ng-repeat="item in block.Items">
-                    <a>{{item.Text}}</a>
+                    <a ng-click="$ctrl.clearSelection(); $ctrl.onModuleChosen({key: item.Key});">{{item.Text}}</a>
                 </li>
             </ul>
         </div>

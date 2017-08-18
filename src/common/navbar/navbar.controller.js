@@ -14,10 +14,12 @@ function NavbarController($scope, clickAnywhereButHereService, navigationService
         });
     };
 
-    clickAnywhereButHereService($scope, () => {
+    this.clearSelection = () => {
         this.selectedItem = null;
         this.menu = null;
-    });
+    };
+
+    clickAnywhereButHereService($scope, this.clearSelection);
 }
 
 export default NavbarController;

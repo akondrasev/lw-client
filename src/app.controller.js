@@ -12,11 +12,13 @@ function Controller(navigationService) {
     };
 
     this.openModule = (key) => {
-        let module = this.leftMenu.find(function (item) {
-            return item.Key === key;
-        });
+        let module = navigationService.getModuleByKey(key);
 
-        this.openedTabs.indexOf(module) === -1 && this.openedTabs.push(module);
+        console.log(module);
+        
+        if (module) {
+            this.openedTabs.indexOf(module) === -1 && this.openedTabs.push(module);
+        }
     }
 }
 

@@ -33,6 +33,32 @@ const NavigationService = function ($http, $q) {
         }]
     };
 
+    this.getModuleByKey = (key) => {
+        let result;
+
+        for (let _key in detailedMenus) {
+            let array = detailedMenus[_key];
+            for (let i = 0; i < array.length; i++) {
+                let submenu = array[i].Items;
+
+                for (let j = 0; j < submenu.length; j++) {
+                    let item = submenu[j];
+
+                    if (item.Key === key) {
+                        result = item;
+                        break;
+                    }
+                }
+
+                if (result) break;
+            }
+
+            if (result) break;
+        }
+
+        return result;
+    };
+
     this.getDetailedMenuByKey = (key) => {
         let defer = $q.defer();
 

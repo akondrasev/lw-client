@@ -6,7 +6,7 @@ const navbarComponent = {
     template,
     bindings: {
         items: "<",
-        onMenuClick: "&"
+        onModuleChosen: "&"
     },
     controller
 };
