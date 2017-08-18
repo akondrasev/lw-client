@@ -13,10 +13,10 @@ function Controller(navigationService, $transitions) {
 
     $transitions.onSuccess("*", (transition) => {
         let moduleKey = transition.to().name;
-        this.openModule(moduleKey);
+        this.addTab(moduleKey);
     });
 
-    this.openModule = (key) => {
+    this.addTab = (key) => {
         let module = navigationService.getModuleByKey(key);
 
         if (module) {
