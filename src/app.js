@@ -6,17 +6,21 @@ import Services from './services/services';
 import Components from './components/components'
 
 import 'bootstrap';
-import 'open-iconic/font/css/open-iconic-bootstrap.css'
+import 'open-iconic/font/css/open-iconic-bootstrap.css';
+import 'oclazyload';
 
 angular.module('app', [
     uiRouter,
     Common,
     Services,
-    Components
+    Components,
+    'oc.lazyLoad'
 ]).config(($locationProvider, $compileProvider, $urlRouterProvider, $stateProvider) => {
     "ngInject";
 
     $compileProvider.debugInfoEnabled(false);
+
+    $urlRouterProvider.otherwise("empty");
 
     $stateProvider
         .state('empty', {

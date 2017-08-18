@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-const NavigationService = function ($http, $q) {
+const NavigationService = function ($http, $q, $ocLazyLoad) {
     "ngInject";
 
     let openedModules = [];
@@ -90,6 +90,17 @@ const NavigationService = function ($http, $q) {
 
     this.getOpenedModules = () => {
         return openedModules;
+    };
+
+
+    this.loadModule = () => {
+        let defer = $q.defer();
+        require.ensure([], () => {
+            let moduleName = require('../components/my-inventory/my-inventory').default;
+            $ocLazyLoad.load({name: moduleName});
+            defer.resolve(moduleName);
+        });
+        return defer.promise;
     };
 };
 
