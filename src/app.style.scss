@@ -16,9 +16,20 @@
 
 .app .container-flex .content-container-flex {
   flex-basis: 100%;
+
+  display: flex;
+  flex-direction: column;
 }
 
-.app .container-flex .content-container-flex .view-content,
 .app .container-flex .content-container-flex .view-content .module {
   height: 100%;
+}
+
+.app .container-flex .content-container-flex .view-content {
+  padding: 20px;
+  flex-basis: 100%;
+}
+
+.app .container-flex .content-container-flex .view-content .module {
+  border: 1px solid $lwDarkBlueTitle;
 }
