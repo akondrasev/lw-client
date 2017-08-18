@@ -1,7 +1,7 @@
 <div class="tab-menu">
     <ul>
-        <li ui-sref="tab.Key" ui-sref-active="active" ng-repeat="tab in $ctrl.openedTabs">
-            {{tab.Text}}
+        <li ui-sref-active="active" ng-repeat="tab in $ctrl.openedTabs">
+            <a ui-sref="{{tab.Key}}()">{{tab.Text}}</a>
         </li>
     </ul>
 </div>

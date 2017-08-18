@@ -3,6 +3,7 @@ import uiRouter from 'angular-ui-router';
 import AppComponent from './app.component';
 import Common from './common/common';
 import Services from './services/services';
+import Components from './components/components'
 
 import 'bootstrap';
 import 'open-iconic/font/css/open-iconic-bootstrap.css'
@@ -10,8 +11,9 @@ import 'open-iconic/font/css/open-iconic-bootstrap.css'
 angular.module('app', [
     uiRouter,
     Common,
-    Services
-]).config(($locationProvider, $compileProvider) => {
+    Services,
+    Components
+]).config(($locationProvider, $compileProvider, $urlRouterProvider, $stateProvider) => {
     "ngInject";
 
     $compileProvider.debugInfoEnabled(false);

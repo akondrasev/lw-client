@@ -1,4 +1,4 @@
-function Controller(navigationService) {
+function Controller(navigationService, $transitions) {
     "ngInject";
 
     this.openedTabs = [];
@@ -11,11 +11,14 @@ function Controller(navigationService) {
     this.$onInit = () => {
     };
 
+    $transitions.onSuccess("*", (transition) => {
+        let moduleKey = transition.to().name;
+        this.openModule(moduleKey);
+    });
+
     this.openModule = (key) => {
         let module = navigationService.getModuleByKey(key);
 
-        console.log(module);
-        
         if (module) {
             this.openedTabs.indexOf(module) === -1 && this.openedTabs.push(module);
         }

@@ -17,3 +17,8 @@
 .app .container-flex .content-container-flex {
   flex-basis: 100%;
 }
+
+.app .container-flex .content-container-flex .view-content,
+.app .container-flex .content-container-flex .view-content .module {
+  height: 100%;
+}
