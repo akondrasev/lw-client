@@ -3,6 +3,8 @@ import angular from 'angular';
 const NavigationService = function ($http, $q) {
     "ngInject";
 
+    let openedModules = [];
+
     let modules = [
         {
             Key: "inventory",
@@ -73,7 +75,22 @@ const NavigationService = function ($http, $q) {
         defer.resolve(modules);
 
         return defer.promise;
-    }
+    };
+
+    this.openModule = (module) => {
+        openedModules.indexOf(module) === -1 && openedModules.push(module);
+        return openedModules;
+    };
+
+    this.closeModule = (module) => {
+        return openedModules = openedModules.filter(function (item) {
+            return item !== module;
+        });
+    };
+
+    this.getOpenedModules = () => {
+        return openedModules;
+    };
 };
 
 const module = angular

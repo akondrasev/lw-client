@@ -17,18 +17,15 @@ function Controller(navigationService, $transitions) {
     });
 
     this.addTab = (key) => {
-        let module = navigationService.getModuleByKey(key);
+        let availableModule = navigationService.getModuleByKey(key);
 
-        if (module) {
-            this.openedTabs.indexOf(module) === -1 && this.openedTabs.push(module);
+        if (availableModule) {
+            this.openedTabs = navigationService.openModule(availableModule);
         }
     };
 
-    this.closeTab = (tab) => {
-        console.log(tab);
-        this.openedTabs = this.openedTabs.filter(function (item) {
-            return item !== tab;
-        });
+    this.closeTab = (module) => {
+        this.openedTabs = navigationService.closeModule(module);
     }
 }
 

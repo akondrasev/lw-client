@@ -31,13 +31,16 @@
 
 .tab-menu > ul > li > a + button {
   cursor: pointer;
-  color: grey;
   opacity: 0.5;
   background: transparent;
   border: none;
   outline: none;
   font-size: 11px;
-  //border-radius: 25px;
+  color: white;
+}
+
+.tab-menu > ul > li.active > a + button {
+  color: grey;
 }
 
 .tab-menu > ul > li > a + button:hover {
