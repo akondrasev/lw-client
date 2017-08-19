@@ -22,7 +22,6 @@ function Controller(navigationService, $transitions, preloadModules, $state) {
     });
 
     this.addTab = (key) => {
-        console.log(`open tab ${key}`);
         let availableModule = navigationService.getModuleByKey(key);
 
         if (availableModule) {
