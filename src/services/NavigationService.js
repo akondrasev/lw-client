@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-const NavigationService = function ($http, $q, $ocLazyLoad) {
+const NavigationService = function ($http, $q, $ocLazyLoad, $state) {
     "ngInject";
 
     let components = {
@@ -96,6 +96,12 @@ const NavigationService = function ($http, $q, $ocLazyLoad) {
         defer.resolve(modules);
 
         return defer.promise;
+    };
+
+    this.navigateModule = (key) => {
+        this.loadModule(key).then(() => {
+            $state.go(key);
+        });
     };
 
     this.openModule = (module) => {

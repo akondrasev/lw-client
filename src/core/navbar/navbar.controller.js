@@ -1,4 +1,4 @@
-function NavbarController($scope, $state, clickAnywhereButHereService, navigationService) {
+function NavbarController($scope, clickAnywhereButHereService, navigationService) {
     "ngInject";
 
     this.selectItem = (item) => {
@@ -14,11 +14,7 @@ function NavbarController($scope, $state, clickAnywhereButHereService, navigatio
         });
     };
 
-    this.navigateModule = (key) => {
-        navigationService.loadModule(key).then(() => {
-            $state.go(key);
-        });
-    };
+    this.navigateModule = navigationService.navigateModule;
 
     this.clearSelection = () => {
         this.selectedItem = null;

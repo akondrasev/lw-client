@@ -3,7 +3,8 @@ import uiRouter from 'angular-ui-router';
 import AppComponent from './app.component';
 import Common from './core/core';
 import Services from './services/services';
-import Components from './components/components'
+import Components from './components/components';
+import PreloadModulesProvider from './providers/PreloadModulesProvider';
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -15,18 +16,22 @@ angular.module('app', [
     Common,
     Services,
     Components,
-    'oc.lazyLoad'
-]).config(($locationProvider, $compileProvider, $urlRouterProvider, $stateProvider) => {
+    'oc.lazyLoad',
+    PreloadModulesProvider
+]).config(($locationProvider, $compileProvider, $urlRouterProvider, $stateProvider, preloadModulesProvider) => {
     "ngInject";
 
     $compileProvider.debugInfoEnabled(false);
 
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise(($injector, $location) => {
+        let keys = $location.$location.$$url.split("/");
+        preloadModulesProvider.preloadModules(keys);
+    });
 
     $stateProvider
         .state('empty', {
             url: '/',
-            template: "<div>EMPTY STATE</div>"
+            template: "<div></div>"
         });
 
     // console.log($compileProvider);

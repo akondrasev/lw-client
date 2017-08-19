@@ -1,5 +1,9 @@
-function Controller(navigationService, $transitions) {
+function Controller(navigationService, $transitions, preloadModules, $state) {
     "ngInject";
+
+    preloadModules.getPreloadModules().then((keys) => {
+        navigationService.navigateModule(keys[0]);
+    });
 
     this.openedTabs = [];
     this.leftMenu = [];
@@ -9,6 +13,7 @@ function Controller(navigationService, $transitions) {
     });
 
     this.$onInit = () => {
+
     };
 
     $transitions.onSuccess("*", (transition) => {
@@ -17,6 +22,7 @@ function Controller(navigationService, $transitions) {
     });
 
     this.addTab = (key) => {
+        console.log(`open tab ${key}`);
         let availableModule = navigationService.getModuleByKey(key);
 
         if (availableModule) {
