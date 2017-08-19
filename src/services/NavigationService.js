@@ -3,6 +3,27 @@ import angular from 'angular';
 const NavigationService = function ($http, $q, $ocLazyLoad) {
     "ngInject";
 
+    let components = {
+        "my-inventory": () => {
+            let defer = $q.defer();
+            require.ensure([], () => {
+                let moduleName = require(`../components/my-inventory/my-inventory`).default;
+                $ocLazyLoad.load({name: moduleName});
+                defer.resolve(moduleName);
+            });
+            return defer.promise;
+        },
+        "open-orders": () => {
+            let defer = $q.defer();
+            require.ensure([], () => {
+                let moduleName = require(`../components/open-orders/open-orders`).default;
+                $ocLazyLoad.load({name: moduleName});
+                defer.resolve(moduleName);
+            });
+            return defer.promise;
+        }
+    };
+
     let openedModules = [];
 
     let modules = [
@@ -16,7 +37,7 @@ const NavigationService = function ($http, $q, $ocLazyLoad) {
             Text: "Orders Book",
             Icon: "oi oi-dollar"
         }
-    ];
+    ];//TODO API call for available menu items
 
     let detailedMenus = {
         "inventory": [{
@@ -33,7 +54,7 @@ const NavigationService = function ($http, $q, $ocLazyLoad) {
                 Text: "Open Orders"
             }]
         }]
-    };
+    };//TODO API call for available modules from each category
 
     this.getModuleByKey = (key) => {
         let result;
@@ -93,14 +114,8 @@ const NavigationService = function ($http, $q, $ocLazyLoad) {
     };
 
 
-    this.loadModule = () => {
-        let defer = $q.defer();
-        require.ensure([], () => {
-            let moduleName = require('../components/my-inventory/my-inventory').default;
-            $ocLazyLoad.load({name: moduleName});
-            defer.resolve(moduleName);
-        });
-        return defer.promise;
+    this.loadModule = (key) => {
+        return components[key]();
     };
 };
 

@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 //TODO make production - friendly configuration to allow switch build types (ex. if production = true -> minimize code and configure angular to drop debug nodes from DOM)
 module.exports = {
-    devtool: 'eval',
+    devtool: 'source-map',
 
     entry: {
         app: ['./src/app.js']
@@ -43,7 +43,7 @@ module.exports = {
             hash: true
         }),
 
-        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
 
         // new webpack.optimize.UglifyJsPlugin({
         //     mangle: {

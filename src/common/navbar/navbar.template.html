@@ -11,8 +11,7 @@
             <h4>{{block.Title}}</h4>
             <ul>
                 <li ng-repeat="item in block.Items">
-                    <a ng-click="$ctrl.clearSelection();" ui-sref="{{item.Key}}()">{{item.Text}}</a>
-                    <!--<a ng-click="$ctrl.clearSelection(); $ctrl.onModuleChosen({key: item.Key});">{{item.Text}}</a>-->
+                    <a ng-click="$ctrl.clearSelection(); $ctrl.navigateModule(item.Key);">{{item.Text}}</a>
                 </li>
             </ul>
         </div>
