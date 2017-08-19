@@ -1,9 +1,13 @@
-//@import "~bootstrap/scss/bootstrap";
 @import 'core/core';
+
+html {
+  min-width: 1280px;
+  min-height: 720px;
+}
 
 html, body {
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
   font-size: 14px;
 }
 
