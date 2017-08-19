@@ -1,4 +1,4 @@
-function Controller(navigationService, $transitions, preloadModules, $state) {
+function Controller(navigationService, $transitions, preloadModules) {
     "ngInject";
 
     preloadModules.getPreloadModules().then((keys) => {
