@@ -1,11 +1,12 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import AppComponent from './app.component';
-import Common from './common/common';
+import Common from './core/core';
 import Services from './services/services';
 import Components from './components/components'
 
 import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
 import 'open-iconic/font/css/open-iconic-bootstrap.css';
 import 'oclazyload';
 
@@ -20,7 +21,7 @@ angular.module('app', [
 
     $compileProvider.debugInfoEnabled(false);
 
-    $urlRouterProvider.otherwise("empty");
+    $urlRouterProvider.otherwise("/");
 
     $stateProvider
         .state('empty', {

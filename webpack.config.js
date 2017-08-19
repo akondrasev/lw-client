@@ -45,16 +45,18 @@ module.exports = {
 
         // new webpack.HotModuleReplacementPlugin(),
 
-        // new webpack.optimize.UglifyJsPlugin({
-        //     mangle: {
-        //         except: ['$', 'jQuery', 'angular']
-        //     }
-        // }),
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: true,
+            mangle: {
+                except: ['$', 'jQuery', 'angular']
+            }
+        }),
 
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             minChunks: function (module, count) {
-                return module.resource && module.resource.indexOf(path.resolve(__dirname, 'src')) === -1;
+                return module.resource
+                    && (module.resource.indexOf(path.resolve(__dirname, 'src')) === -1 || module.resource.indexOf(path.resolve(__dirname, 'bootstrap')) > -1);
             }
         }),
 

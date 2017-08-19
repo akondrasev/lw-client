@@ -1,4 +1,11 @@
-@import 'common/common';
+//@import "~bootstrap/scss/bootstrap";
+@import 'core/core';
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-size: 14px;
+}
 
 .app {
   height: 100%;
