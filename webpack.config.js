@@ -43,7 +43,7 @@ module.exports = {
             hash: true
         }),
 
-        // new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
 
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,
@@ -56,7 +56,7 @@ module.exports = {
             name: 'vendor',
             minChunks: function (module, count) {
                 return module.resource
-                    && (module.resource.indexOf(path.resolve(__dirname, 'src')) === -1 || module.resource.indexOf(path.resolve(__dirname, 'bootstrap')) > -1);
+                    && (module.resource.indexOf(path.resolve(__dirname, 'src')) === -1);
             }
         }),
 
