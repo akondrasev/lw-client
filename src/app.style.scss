@@ -43,3 +43,24 @@ html, body {
 .app .container-flex .content-container-flex .view-content .module {
   border: 1px solid silver;
 }
+
+.app .container-flex .content-container-flex .view-content .global-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: grey;
+  color: black;
+  opacity: 0.5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 18px;
+}
+
+.app .container-flex .content-container-flex .view-content .global-loading span.oi {
+  margin-right: 5px;
+}

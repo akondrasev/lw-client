@@ -9,6 +9,10 @@
             <tab-menu opened-tabs="$ctrl.openedTabs" on-close-click="$ctrl.closeTab(tab);"></tab-menu>
             <div class="view-content">
                 <ui-view></ui-view>
+                <div ng-if="$ctrl.isLoading();" class="global-loading">
+                    <span class="oi oi-clock"></span>
+                    Loading...
+                </div>
             </div>
         </div>
     </div>
