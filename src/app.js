@@ -4,29 +4,26 @@ import AppComponent from './app.component';
 import Common from './core/core';
 import Services from './services/services';
 import Components from './components/components';
-import PreloadModulesProvider from './providers/PreloadModulesProvider';
+import LazyLoad from 'oclazyload';
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'open-iconic/font/css/open-iconic-bootstrap.css';
-import 'oclazyload';
+
 
 angular.module('app', [
     uiRouter,
     Common,
     Services,
     Components,
-    'oc.lazyLoad',
-    PreloadModulesProvider
-]).config(($locationProvider, $compileProvider, $urlRouterProvider, $stateProvider, preloadModulesProvider) => {
+    LazyLoad
+]).config(($locationProvider, $compileProvider, $urlRouterProvider, $stateProvider) => {
     "ngInject";
 
     $compileProvider.debugInfoEnabled(false);
 
-    $urlRouterProvider.otherwise(($injector, $location) => {
-        let keys = $location.$location.$$url.split("/");
-        preloadModulesProvider.preloadModules(keys);
-    });
+    // $urlRouterProvider.otherwise(($injector, $location) => {
+    // });
 
     $stateProvider
         .state('empty', {
