@@ -3,22 +3,30 @@ import angular from 'angular';
 const NavigationService = function ($http, $q, $ocLazyLoad, $state) {
     "ngInject";
 
+    let loading = false;
+    this.isLoading = () => loading;
+    this.setLoading = (value) => loading = value;
+
     let components = {
         "my-inventory": () => {
             let defer = $q.defer();
+            this.setLoading(true);
             require.ensure([], () => {
                 let moduleName = require(`../components/my-inventory/my-inventory`).default;
                 $ocLazyLoad.load({name: moduleName});
                 defer.resolve(moduleName);
+                this.setLoading(false);
             });
             return defer.promise;
         },
         "open-orders": () => {
             let defer = $q.defer();
+            this.setLoading(true);
             require.ensure([], () => {
                 let moduleName = require(`../components/open-orders/open-orders`).default;
                 $ocLazyLoad.load({name: moduleName});
                 defer.resolve(moduleName);
+                this.setLoading(false);
             });
             return defer.promise;
         }

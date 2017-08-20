@@ -8,6 +8,8 @@ function Controller(navigationService, $transitions, preloadModules) {
     this.openedTabs = [];
     this.leftMenu = [];
 
+    this.isLoading = navigationService.isLoading;
+
     navigationService.getAvailableModules().then((_modules) => {
         this.leftMenu = _modules;
     });
