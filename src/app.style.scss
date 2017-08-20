@@ -50,15 +50,14 @@ html, body {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: grey;
+  background-color: rgba(0,0,0, 0.3);
   color: black;
-  opacity: 0.5;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  font-size: 18px;
+  font-size: 25px;
 }
 
 .app .container-flex .content-container-flex .view-content .global-loading span.oi {
