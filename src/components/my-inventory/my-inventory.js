@@ -9,8 +9,6 @@ let myInventoryModule = angular.module('app.myInventory', [
 myInventoryModule.config(($stateProvider, $urlRouterProvider) => {
     "ngInject";
 
-    // $urlRouterProvider.otherwise('/my-inventory');
-
     $stateProvider
         .state('my-inventory', {
             url: '/my-inventory',
