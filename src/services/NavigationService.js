@@ -12,7 +12,7 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state) {
             let defer = $q.defer();
             this.setLoading(true);
             require.ensure([], () => {
-                let moduleName = require(`../components/my-inventory/my-inventory`).default;
+                let moduleName = require(`../modules/my-inventory/my-inventory`).default;
                 $ocLazyLoad.load({name: moduleName});
                 defer.resolve(moduleName);
                 this.setLoading(false);
@@ -23,7 +23,7 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state) {
             let defer = $q.defer();
             this.setLoading(true);
             require.ensure([], () => {
-                let moduleName = require(`../components/open-orders/open-orders`).default;
+                let moduleName = require(`../modules/open-orders/open-orders`).default;
                 $ocLazyLoad.load({name: moduleName});
                 defer.resolve(moduleName);
                 this.setLoading(false);

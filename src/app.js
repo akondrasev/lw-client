@@ -3,7 +3,7 @@ import uiRouter from 'angular-ui-router';
 import AppComponent from './app.component';
 import Common from './core/core';
 import Services from './services/services';
-import Components from './components/components';
+import Components from './modules/modules';
 import LazyLoad from 'oclazyload';
 
 import 'bootstrap';
