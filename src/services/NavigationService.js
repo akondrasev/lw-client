@@ -8,6 +8,17 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state) {
     this.setLoading = (value) => loading = value;
 
     let components = {
+        "login": () => {
+            let defer = $q.defer();
+            this.setLoading(true);
+            require.ensure([], () => {
+                let moduleName = require(`../modules/login/login`).default;
+                $ocLazyLoad.load({name: moduleName});
+                defer.resolve(moduleName);
+                this.setLoading(false);
+            });
+            return defer.promise;
+        },
         "my-inventory": () => {
             let defer = $q.defer();
             this.setLoading(true);
