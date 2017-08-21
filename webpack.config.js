@@ -7,13 +7,18 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
     devtool: 'source-map',
 
+    watch: true,
+    watchOptions: {
+        aggregateTimeout: 100
+    },
+
     entry: {
         app: ['./src/app.js']
     },
 
     output: {
         filename: '[name].bundle.js',
-        publicPath: '/docs',
+        publicPath: '/',
         path: path.resolve(__dirname, 'docs')
     },
 
@@ -35,7 +40,7 @@ module.exports = {
     },
 
     plugins: [
-        new CleanWebpackPlugin(['docs']),
+        new CleanWebpackPlugin(['docs/*']),
 
         new HtmlWebpackPlugin({
             template: './src/index.html',
