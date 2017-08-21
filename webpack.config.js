@@ -7,10 +7,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
     devtool: 'source-map',
 
-    watch: true,
-    watchOptions: {
-        aggregateTimeout: 100
-    },
+    // watch: true,
+    // watchOptions: {
+    //     aggregateTimeout: 100
+    // },
 
     entry: {
         app: ['./src/app.js']
@@ -18,7 +18,7 @@ module.exports = {
 
     output: {
         filename: '[name].bundle.js',
-        publicPath: '/',
+        publicPath: '/docs',
         path: path.resolve(__dirname, 'docs')
     },
 

@@ -27,6 +27,7 @@ html, body {
 
 .app .container-flex .content-container-flex {
   flex-basis: 100%;
+  width: calc(100% - 100px);
   display: flex;
   flex-direction: column;
 }
