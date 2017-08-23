@@ -8,7 +8,7 @@ import LazyLoad from 'oclazyload';
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-import 'open-iconic/font/css/open-iconic-bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
 
 
 angular.module('app', [

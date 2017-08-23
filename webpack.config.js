@@ -18,6 +18,7 @@ module.exports = {
 
     output: {
         filename: '[name].bundle.js',
+        chunkFilename: '[name].chunk.js',
         publicPath: '/docs',
         path: path.resolve(__dirname, 'docs')
     },
@@ -45,7 +46,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             inject: 'body',
-            hash: true
+            hash: true,
+            title: "Linnworks - DEV"
         }),
 
         new webpack.HotModuleReplacementPlugin(),

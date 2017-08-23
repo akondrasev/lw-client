@@ -49,12 +49,12 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state) {
         {
             Key: "inventory",
             Text: "Inventory",
-            Icon: "oi oi-cart"
+            Icon: "fa fa-cubes"
         },
         {
             Key: "orders-book",
             Text: "Orders Book",
-            Icon: "oi oi-dollar"
+            Icon: "fa fa-eur"
         }
     ];//TODO API call for available menu items
 

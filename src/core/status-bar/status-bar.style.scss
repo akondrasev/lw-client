@@ -36,15 +36,15 @@
   padding: 6px;
 }
 
-.status-bar > ul > li > div > span:not(.oi) {
+.status-bar > ul > li > div > span {
   width: calc(100% - 25px);
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.status-bar > ul > li .oi {
-  font-size: 18px;
+.status-bar > ul > li i.fa {
+  font-size: 21px;
 }
 
 .status-bar > ul > li:hover {
