@@ -2,7 +2,11 @@ function Controller(navigationService, $transitions, $urlRouter) {
     "ngInject";
 
     let preloadModule = $urlRouter.location.split("/")[1];
-    if (preloadModule && preloadModule !== "") navigationService.navigateModule(preloadModule);
+    if (preloadModule) {
+        navigationService.navigateModule(preloadModule);
+    } else {
+        navigationService.navigateModule("home");
+    }
 
     this.openedTabs = [];
     this.leftMenu = [];
