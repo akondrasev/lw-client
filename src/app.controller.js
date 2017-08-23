@@ -19,10 +19,10 @@ function Controller(navigationService, $transitions, $urlRouter) {
 
     $transitions.onSuccess("*", (transition) => {
         let moduleKey = transition.to().name;
-        this.addTab(moduleKey);
+        addTab(moduleKey);
     });
 
-    this.addTab = (key) => {
+    let addTab = (key) => {
         let availableModule = navigationService.getModuleByKey(key);
 
         if (availableModule) {

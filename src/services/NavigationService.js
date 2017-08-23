@@ -40,7 +40,18 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state) {
                 this.setLoading(false);
             });
             return defer.promise;
-        }
+        },
+        "home": () => {
+            let defer = $q.defer();
+            this.setLoading(true);
+            require.ensure([], () => {
+                let moduleName = require(`../modules/home/home`).default;
+                $ocLazyLoad.load({name: moduleName});
+                defer.resolve(moduleName);
+                this.setLoading(false);
+            });
+            return defer.promise;
+        },
     };
 
     let openedModules = [];
@@ -57,6 +68,11 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state) {
             Icon: "fa fa-eur"
         }
     ];//TODO API call for available menu items
+
+    let homeModule = {
+        Key: "home",
+        Text: "Home"
+    };
 
     let detailedMenus = {
         "inventory": [{
@@ -76,6 +92,10 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state) {
     };//TODO API call for available modules from each category
 
     this.getModuleByKey = (key) => {
+        if (key === "home") {
+            return homeModule;
+        }
+
         let result;
 
         for (let _key in detailedMenus) {
