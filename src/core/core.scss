@@ -13,3 +13,19 @@ $lwDarkBlueTitle: #ABCAF1;
 
 $lwSemiDarkBlue: #5C7FA5;
 $lwSemiDarkBlueHover: #395e88;
+
+.btn-primary {
+  border: 1px solid $lwDarkBlueDarkBorder;
+  color: #ffffff;
+  background-color: #5c7fa5;
+  -moz-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
+  box-shadow: inset 0px 1px 0px 0px #7a8eb9;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5c7fa5), color-stop(1, #557496));
+  background: -moz-linear-gradient(top, #5c7fa5 100%, #557496 100%);
+  background: -webkit-linear-gradient(top, #5c7fa5 100%, #557496 100%);
+  background: -o-linear-gradient(top, #5c7fa5 100%, #557496 100%);
+  background: -ms-linear-gradient(top, #5c7fa5 100%, #557496 100%);
+  background: linear-gradient(to bottom, #5c7fa5 100%, #557496 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='5c7fa5', endColorstr='#557496', GradientType=0);
+}
