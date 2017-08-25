@@ -1,11 +1,15 @@
-function Controller(navigationService, $transitions, $urlRouter) {
+function Controller(navigationService, $transitions, $urlRouter, authenticationService) {
     "ngInject";
 
-    let preloadModule = $urlRouter.location.split("/")[1];
-    if (preloadModule) {
-        navigationService.navigateModule(preloadModule);
+    if (!authenticationService.isAuthorized()) {
+        navigationService.navigateModule("login");
     } else {
-        navigationService.navigateModule("home");
+        let preloadModule = $urlRouter.location.split("/")[1];
+        if (preloadModule) {
+            navigationService.navigateModule(preloadModule);
+        } else {
+            navigationService.navigateModule("home");
+        }
     }
 
     this.openedTabs = [];
