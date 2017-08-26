@@ -25,6 +25,8 @@ function Controller(navigationService, $transitions, $urlRouter, authenticationS
 
     };
 
+    this.isAuthorized = authenticationService.isAuthorized;
+
     $transitions.onSuccess("*", (transition) => {
         let moduleKey = transition.to().name;
         addTab(moduleKey);

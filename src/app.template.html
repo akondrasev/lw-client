@@ -1,12 +1,12 @@
 <div class="app">
     <div class="container-flex">
-        <div class="left-menu-container">
+        <div class="left-menu-container" ng-if="$ctrl.isAuthorized();">
             <navbar items="$ctrl.leftMenu"></navbar>
         </div>
 
         <div class="content-container-flex">
-            <status-bar></status-bar>
-            <tab-menu opened-tabs="$ctrl.openedTabs" on-close-click="$ctrl.closeTab(tab);"></tab-menu>
+            <status-bar ng-if="$ctrl.isAuthorized();"></status-bar>
+            <tab-menu opened-tabs="$ctrl.openedTabs" on-close-click="$ctrl.closeTab(tab);" ng-if="$ctrl.isAuthorized();"></tab-menu>
             <div class="view-content">
                 <ui-view></ui-view>
                 <div ng-if="$ctrl.isLoading();" class="global-loading">
