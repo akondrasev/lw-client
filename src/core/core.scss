@@ -14,8 +14,11 @@ $lwDarkBlueTitle: #ABCAF1;
 $lwSemiDarkBlue: #5C7FA5;
 $lwSemiDarkBlueHover: #395e88;
 
+$lwLightBlueBackground: #93B1C9;
+
 .btn-primary {
   border: 1px solid $lwDarkBlueDarkBorder;
+  border-radius: 0;
   color: #ffffff;
   background-color: #5c7fa5;
   -moz-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
