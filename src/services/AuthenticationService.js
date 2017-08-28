@@ -3,7 +3,7 @@ import angular from 'angular';
 const AuthenticationService = function ($http, $q) {
     "ngInject";
 
-    let user = null;
+    let user = localStorage.getItem("user") || null;
 
     this.isAuthorized = () => {
         return user !== null;
@@ -16,6 +16,8 @@ const AuthenticationService = function ($http, $q) {
             email: email
         };
 
+        localStorage.setItem("user", JSON.stringify(user));
+
         defer.resolve();
         return defer.promise;
     };
@@ -24,6 +26,8 @@ const AuthenticationService = function ($http, $q) {
         let defer = $q.defer();
 
         user = null;
+
+        localStorage.removeItem("user");
 
         defer.resolve();
         return defer.promise;
