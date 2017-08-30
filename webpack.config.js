@@ -52,12 +52,12 @@ module.exports = {
 
         new webpack.HotModuleReplacementPlugin(),
 
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            mangle: {
-                except: ['$', 'jQuery', 'angular']
-            }
-        }),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     sourceMap: true,
+        //     mangle: {
+        //         except: ['$', 'jQuery', 'angular']
+        //     }
+        // }),
 
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',

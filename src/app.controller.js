@@ -26,6 +26,11 @@ function Controller(navigationService, $transitions, $urlRouter, authenticationS
     };
 
     this.isAuthorized = authenticationService.isAuthorized;
+    this.logout = () => {
+        authenticationService.logout().then(() => {//TODO immediately hide currently opened module (it is still shown when navigating to login)
+            navigationService.navigateModule("login");
+        });
+    };
 
     $transitions.onSuccess("*", (transition) => {
         let moduleKey = transition.to().name;

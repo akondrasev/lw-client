@@ -4,7 +4,7 @@ import './status-bar.style.scss';
 const statusBarComponent = {
     template,
     bindings: {
-
+        logout: "&"
     }
 };
 
