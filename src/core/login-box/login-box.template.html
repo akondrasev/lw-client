@@ -1,18 +1,8 @@
 <div class="login-box">
     <window>
         <form class="form-signin" ng-submit="$ctrl.login({email: $ctrl.email, password: $ctrl.password})">
-            <h2 class="form-signin-heading">Please sign in</h2>
-
-            <label for="inputEmail" class="sr-only">Email address</label>
             <input type="email" id="inputEmail" ng-model="$ctrl.email" class="form-control" placeholder="Email address" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" id="inputPassword" ng-model="$ctrl.password" class="form-control" placeholder="Password" required>
-
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
 
             <div class="buttons">
                 <button class="btn btn-primary" type="submit">Sign in</button>
