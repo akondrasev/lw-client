@@ -3,7 +3,7 @@ import angular from 'angular';
 const AuthenticationService = function ($http, $q) {
     "ngInject";
 
-    let user = localStorage.getItem("user") || null;
+    let user = JSON.parse(localStorage.getItem("user")) || null;
 
     this.isAuthorized = () => {
         return user !== null;
