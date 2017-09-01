@@ -8,7 +8,7 @@
             <status-bar ng-if="$ctrl.isAuthorized();" logout="$ctrl.logout();"></status-bar>
             <tab-menu opened-tabs="$ctrl.openedTabs" on-close-click="$ctrl.closeTab(tab);" ng-if="$ctrl.isAuthorized();"></tab-menu>
             <div class="view-content">
-                <ui-view ng-show="!$ctrl.isLoading();"></ui-view>
+                <ui-view></ui-view>
                 <div ng-if="$ctrl.isLoading();" class="global-loading">
                     <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
                     Loading...

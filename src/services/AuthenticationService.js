@@ -14,13 +14,14 @@ const AuthenticationService = function ($http, $q, $timeout, navigationService) 
 
         navigationService.setLoading(true);
 
-        user = {
-            email: email
-        };
-
         localStorage.setItem("user", JSON.stringify(user));
 
-        $timeout(1000).then(defer.resolve);
+        $timeout(1000).then(() => {
+            user = {
+                email: email
+            };
+            defer.resolve();
+        });
         return defer.promise;
     };
 
@@ -29,11 +30,12 @@ const AuthenticationService = function ($http, $q, $timeout, navigationService) 
 
         navigationService.setLoading(true);
 
-        user = null;
-
         localStorage.removeItem("user");
 
-        $timeout(1000).then(defer.resolve);
+        $timeout(1000).then(() => {
+            user = null;
+            defer.resolve();
+        });
 
         return defer.promise;
     };
