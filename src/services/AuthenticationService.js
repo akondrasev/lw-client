@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-const AuthenticationService = function ($http, $q) {
+const AuthenticationService = function ($http, $q, $timeout, navigationService) {
     "ngInject";
 
     let user = JSON.parse(localStorage.getItem("user")) || null;
@@ -12,24 +12,29 @@ const AuthenticationService = function ($http, $q) {
     this.login = (email, password) => {
         let defer = $q.defer();
 
+        navigationService.setLoading(true);
+
         user = {
             email: email
         };
 
         localStorage.setItem("user", JSON.stringify(user));
 
-        defer.resolve();
+        $timeout(1000).then(defer.resolve);
         return defer.promise;
     };
 
     this.logout = () => {
         let defer = $q.defer();
 
+        navigationService.setLoading(true);
+
         user = null;
 
         localStorage.removeItem("user");
 
-        defer.resolve();
+        $timeout(1000).then(defer.resolve);
+
         return defer.promise;
     };
 };
