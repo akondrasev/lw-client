@@ -1,12 +1,16 @@
-<div class="login-box">
-    <window>
-        <form class="form-signin" ng-submit="$ctrl.login({email: $ctrl.email, password: $ctrl.password})">
+<div class="login-box" window>
+    <form class="form-signin" ng-submit="$ctrl.login({email: $ctrl.email, password: $ctrl.password})">
+        <div class="header">
+            Logo header
+        </div>
+        <div class="content">
             <input type="email" id="inputEmail" ng-model="$ctrl.email" class="form-control" placeholder="Email address" required autofocus>
             <input type="password" id="inputPassword" ng-model="$ctrl.password" class="form-control" placeholder="Password" required>
-
+        </div>
+        <div class="footer">
             <div class="buttons">
                 <button class="btn btn-primary" type="submit">Sign in</button>
             </div>
-        </form>
-    </window>
+        </div>
+    </form>
 </div>

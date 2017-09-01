@@ -1,8 +1,8 @@
 import angular from 'angular';
-import component from './window.component';
+import directive from './window.directive';
 
 let windowModule = angular.module('window', []);
 
-windowModule.component('window', component);
+windowModule.directive('window', directive);
 
 export default windowModule.name;
