@@ -1,4 +1,4 @@
-function Controller(navigationService, $transitions, $urlRouter, authenticationService) {
+function Controller(navigationService, $transitions, $urlRouter, authenticationService, $state) {
     "ngInject";
 
     if (!authenticationService.isAuthorized()) {
@@ -27,14 +27,20 @@ function Controller(navigationService, $transitions, $urlRouter, authenticationS
 
     this.isAuthorized = authenticationService.isAuthorized;
     this.logout = () => {
+        $state.go("/");
         authenticationService.logout().then(() => {//TODO immediately hide currently opened module (it is still shown when navigating to login)
             navigationService.navigateModule("login");
         });
     };
 
-    $transitions.onSuccess("*", (transition) => {
+    $transitions.onFinish("*", (transition) => {
+        navigationService.setLoading(false);
+    });
+
+    $transitions.onStart("*", (transition) => {
         let moduleKey = transition.to().name;
         addTab(moduleKey);
+        navigationService.setLoading(true);
     });
 
     let addTab = (key) => {

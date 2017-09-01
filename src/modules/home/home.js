@@ -10,7 +10,13 @@ let homeModule = angular.module("home", [
     $stateProvider
         .state('home', {
             url: '/home',
-            component: 'home'
+            component: 'home',
+            resolve: {
+                items: function ($timeout) {
+                    "ngInject";
+                    return $timeout(1000);
+                }
+            }
         });
 });
 

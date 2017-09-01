@@ -12,7 +12,13 @@ myInventoryModule.config(($stateProvider, $urlRouterProvider) => {
     $stateProvider
         .state('my-inventory', {
             url: '/my-inventory',
-            component: 'myInventory'
+            component: 'myInventory',
+            resolve: {
+                items: function ($timeout) {
+                    "ngInject";
+                    return $timeout(1000);
+                }
+            }
         });
 });
 

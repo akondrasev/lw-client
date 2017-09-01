@@ -10,7 +10,13 @@ let loginModule = angular.module('login', [
     $stateProvider
         .state('login', {
             url: '/login',
-            component: 'login'
+            component: 'login',
+            resolve: {
+                items: function ($timeout) {
+                    "ngInject";
+                    return $timeout(1000);
+                }
+            }
         });
 });
 

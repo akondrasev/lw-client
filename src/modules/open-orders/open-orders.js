@@ -12,7 +12,13 @@ openOrdersModule.config(($stateProvider, $urlRouterProvider) => {
     $stateProvider
         .state('open-orders', {
             url: '/open-orders',
-            component: 'openOrders'
+            component: 'openOrders',
+            resolve: {
+                items: function ($timeout) {
+                    "ngInject";
+                    return $timeout(1000);
+                }
+            }
         });
 });
 

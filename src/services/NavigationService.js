@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-const NavigationService = function ($http, $q, $ocLazyLoad, $state) {
+const NavigationService = function ($http, $q, $ocLazyLoad, $state, $timeout) {
     "ngInject";
 
     let loading = false;
@@ -14,8 +14,11 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state) {
             require.ensure([], () => {
                 let moduleName = require(`../modules/login/login`).default;
                 $ocLazyLoad.load({name: moduleName});
-                defer.resolve(moduleName);
-                this.setLoading(false);
+
+                $timeout(1000).then(() => {
+                    defer.resolve(moduleName);
+                    this.setLoading(false);
+                });
             });
             return defer.promise;
         },
@@ -25,8 +28,11 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state) {
             require.ensure([], () => {
                 let moduleName = require(`../modules/my-inventory/my-inventory`).default;
                 $ocLazyLoad.load({name: moduleName});
-                defer.resolve(moduleName);
-                this.setLoading(false);
+                $timeout(1000).then(() => {
+                    defer.resolve(moduleName);
+                    this.setLoading(false);
+                });
+
             });
             return defer.promise;
         },
@@ -36,8 +42,11 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state) {
             require.ensure([], () => {
                 let moduleName = require(`../modules/open-orders/open-orders`).default;
                 $ocLazyLoad.load({name: moduleName});
-                defer.resolve(moduleName);
-                this.setLoading(false);
+                $timeout(1000).then(() => {
+                    defer.resolve(moduleName);
+                    this.setLoading(false);
+                });
+
             });
             return defer.promise;
         },
@@ -47,8 +56,11 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state) {
             require.ensure([], () => {
                 let moduleName = require(`../modules/home/home`).default;
                 $ocLazyLoad.load({name: moduleName});
-                defer.resolve(moduleName);
-                this.setLoading(false);
+                $timeout(1000).then(() => {
+                    defer.resolve(moduleName);
+                    this.setLoading(false);
+                });
+
             });
             return defer.promise;
         },
