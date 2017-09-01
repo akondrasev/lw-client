@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+let buildFolder = "dist";
+
 module.exports = {
     devtool: 'source-map',
 
@@ -13,8 +15,7 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[name].chunk.js',
-        publicPath: '/docs',
-        path: path.resolve(__dirname, 'docs')
+        path: path.resolve(__dirname, buildFolder)
     },
 
     module: {
@@ -35,7 +36,7 @@ module.exports = {
     },
 
     plugins: [
-        new CleanWebpackPlugin(['docs/*']),
+        new CleanWebpackPlugin([`${buildFolder}/*`]),
 
         new HtmlWebpackPlugin({
             template: './src/index.ejs',
