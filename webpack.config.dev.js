@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     devtool: 'source-map',
@@ -13,7 +12,7 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[name].chunk.js',
-        publicPath: '/docs',
+        publicPath: '/',
         path: path.resolve(__dirname, 'docs')
     },
 
@@ -35,21 +34,14 @@ module.exports = {
     },
 
     plugins: [
-        new CleanWebpackPlugin(['docs/*']),
-
         new HtmlWebpackPlugin({
             template: './src/index.ejs',
             inject: 'body',
             hash: true,
-            title: "Linnworks"
+            title: "Linnworks - DEV"
         }),
 
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            mangle: {
-                except: ['$', 'jQuery', 'angular']
-            }
-        }),
+        new webpack.HotModuleReplacementPlugin(),
 
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',

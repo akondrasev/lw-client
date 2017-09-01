@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Linnworks</title>
+    <title><%= htmlWebpackPlugin.options.title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
@@ -13,6 +13,12 @@
 <app>
     Loading..
 </app>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function(e) {
+        console.log("DOMContentLoaded", e);
+    });
+</script>
 
 </body>
 </html>
