@@ -6,7 +6,7 @@ let windowDirective = function () {
         template,
         transclude: true,
         restrict: "A",
-        scope: false,
+        scope: true,
         controllerAs: "$ctrl",
         controller: function ($element) {
             "ngInject";
