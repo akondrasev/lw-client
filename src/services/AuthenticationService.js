@@ -14,12 +14,11 @@ const AuthenticationService = function ($http, $q, $timeout, navigationService) 
 
         navigationService.setLoading(true);
 
-        localStorage.setItem("user", JSON.stringify(user));
-
         $timeout(1000).then(() => {
             user = {
                 email: email
             };
+            localStorage.setItem("user", JSON.stringify(user));
             defer.resolve();
         });
         return defer.promise;
