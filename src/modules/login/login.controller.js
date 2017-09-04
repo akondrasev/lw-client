@@ -12,7 +12,7 @@ let LoginController = function (authenticationService, navigationService, $state
                 });
             } else {
                 navigationService.loadModule("home").then(() => {
-                    $state.go("home");
+                    $state.go("app.empty");
                 });
             }
         });

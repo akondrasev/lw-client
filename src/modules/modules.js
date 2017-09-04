@@ -13,12 +13,13 @@ componentsModule.config(($stateProvider) => {
     $stateProvider
         .state('app', {
             url: '/app',
-            component: "modules"
+            component: "modules",
+            abstract: true
         });
 
     $stateProvider
-        .state('modules.empty', {
-            url: '/',
+        .state('app.empty', {
+            url: '/empty',
             template: "<div>EMPTY state</div>"
         });
 });

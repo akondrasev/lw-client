@@ -1,6 +1,6 @@
 <div class="tab-menu">
     <ul>
-        <li ui-sref-active="active" ng-repeat="tab in $ctrl.openedTabs" ui-sref="{{tab.Key}}()">
+        <li ng-class="{active: tab.IsActive}" ng-repeat="tab in $ctrl.openedTabs" ng-click="$ctrl.onTabClick({key: tab.Key}); $ctrl.activateTab(tab);">
             <a>{{tab.Text}}</a>
 
             <button ng-click="$ctrl.onCloseClick({tab: tab});" ui-sref="empty">

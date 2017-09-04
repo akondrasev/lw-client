@@ -171,6 +171,10 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $timeout) {
     };
 
     this.loadModule = (key) => {
+        if (!components[key]) {
+            throw new Error(`Attempt to load not existing module '${key}'`);
+        }
+
         return components[key]();
     };
 
