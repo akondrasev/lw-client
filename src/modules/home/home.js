@@ -8,7 +8,7 @@ let homeModule = angular.module("home", [
     "ngInject";
 
     $stateProvider
-        .state('home', {
+        .state('app.home', {
             url: '/home',
             component: 'home',
             resolve: {

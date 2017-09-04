@@ -25,12 +25,6 @@ angular.module('app', [
     // $urlRouterProvider.otherwise(($injector, $location) => {
     // });
 
-    $stateProvider
-        .state('empty', {
-            url: '/',
-            template: "<div>EMPTY state</div>"
-        });
-
     // console.log($compileProvider);
 
     // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions

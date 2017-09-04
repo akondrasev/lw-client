@@ -1,36 +1,37 @@
 function Controller(navigationService, $transitions, $urlRouter, authenticationService, $state) {
     "ngInject";
 
-    $transitions.onFinish("*", (transition) => {
-        console.log("finish", transition);
-        navigationService.setLoading(false);
-    });
-
-    $transitions.onStart("*", (transition) => {
-        console.log("start", transition);
-
-        let moduleKey = transition.to().name;
-        addTab(moduleKey);
-
-        navigationService.setLoading(true);
-    });
+    // $transitions.onFinish("*", (transition) => {
+    //     console.log("finish", transition);
+    //     navigationService.setLoading(false);
+    // });
+    //
+    // $transitions.onStart("*", (transition) => {
+    //     console.log("start", transition);
+    //
+    //     let moduleKey = transition.to().name;
+    //     addTab(moduleKey);
+    //
+    //     navigationService.setLoading(true);
+    // });
 
     if (!authenticationService.isAuthorized()) {
         navigationService.loadModule("login").then(() => {
             $state.go("login");
         });
     } else {
-        let preloadModule = $urlRouter.location.split("/")[1];
+        let preloadModule = $urlRouter.location.split("/")[2];
         if (preloadModule) {
             navigationService.loadModule(preloadModule).then(() => {
-                $state.go(preloadModule);
+                $state.go(`app.${preloadModule}`);
             });
         } else {
             navigationService.loadModule("home").then(() => {
-                $state.go("home");
+                $state.go("app.home");
             });
         }
     }
+
 
     this.openedTabs = navigationService.getInitialOpenedTabs();
     this.navbarItems = [];

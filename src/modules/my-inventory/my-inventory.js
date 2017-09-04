@@ -10,7 +10,7 @@ myInventoryModule.config(($stateProvider, $urlRouterProvider) => {
     "ngInject";
 
     $stateProvider
-        .state('my-inventory', {
+        .state('app.my-inventory', {
             url: '/my-inventory',
             component: 'myInventory',
             resolve: {

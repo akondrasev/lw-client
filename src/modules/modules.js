@@ -1,10 +1,28 @@
 import angular from 'angular';
-// import myInventoryComponent from './my-inventory/my-inventory';
-// import openOrdersComponent from './open-orders/open-orders';
+import uiRouter from 'angular-ui-router';
+
+import modulesComponent from  './modules.component';
 
 let componentsModule = angular.module('app.components', [
-    // myInventoryComponent,
-    // openOrdersComponent
-]).name;
+    uiRouter
+]);
 
-export default componentsModule;
+componentsModule.config(($stateProvider) => {
+    "ngInject";
+
+    $stateProvider
+        .state('app', {
+            url: '/app',
+            component: "modules"
+        });
+
+    $stateProvider
+        .state('modules.empty', {
+            url: '/',
+            template: "<div>EMPTY state</div>"
+        });
+});
+
+componentsModule.component("modules", modulesComponent);
+
+export default componentsModule.name;

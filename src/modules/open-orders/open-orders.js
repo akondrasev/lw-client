@@ -10,7 +10,7 @@ openOrdersModule.config(($stateProvider, $urlRouterProvider) => {
     "ngInject";
 
     $stateProvider
-        .state('open-orders', {
+        .state('app.open-orders', {
             url: '/open-orders',
             component: 'openOrders',
             resolve: {
