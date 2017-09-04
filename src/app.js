@@ -28,7 +28,7 @@ angular.module('app', [
     $stateProvider
         .state('empty', {
             url: '/',
-            template: "<div></div>"
+            template: "<div>EMPTY state</div>"
         });
 
     // console.log($compileProvider);

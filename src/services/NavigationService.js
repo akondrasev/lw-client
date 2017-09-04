@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-const NavigationService = function ($http, $q, $ocLazyLoad, $state, $timeout) {
+const NavigationService = function ($http, $q, $ocLazyLoad, $timeout) {
     "ngInject";
 
     let loading = false;
@@ -66,7 +66,7 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state, $timeout) {
         },
     };
 
-    let openedModules = [];
+    let openedModules = JSON.parse(localStorage.getItem("tabs")) || [];
 
     let modules = [
         {
@@ -149,30 +149,33 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state, $timeout) {
         return defer.promise;
     };
 
-    this.navigateModule = (key) => {
-        this.loadModule(key).then(() => {
-            $state.go(key);
-        });
-    };
-
     this.openModule = (module) => {
-        openedModules.indexOf(module) === -1 && openedModules.push(module);
+        !openedModules.find((_module) => {
+            return _module.Key === module.Key
+        }) && openedModules.push(module);
+
+        localStorage.setItem("tabs", JSON.stringify(openedModules));
         return openedModules;
     };
 
     this.closeModule = (module) => {
-        return openedModules = openedModules.filter(function (item) {
+        openedModules = openedModules.filter(function (item) {
             return item !== module;
         });
+        localStorage.setItem("tabs", JSON.stringify(openedModules));
+        return openedModules;
     };
 
     this.getOpenedModules = () => {
         return openedModules;
     };
 
-
     this.loadModule = (key) => {
         return components[key]();
+    };
+
+    this.getInitialOpenedTabs = () => {
+        return openedModules;
     };
 };
 

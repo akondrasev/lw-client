@@ -29,10 +29,10 @@ const AuthenticationService = function ($http, $q, $timeout, navigationService) 
 
         navigationService.setLoading(true);
 
-        localStorage.removeItem("user");
-
         $timeout(1000).then(() => {
+            localStorage.removeItem("user");
             user = null;
+            navigationService.setLoading(false);
             defer.resolve();
         });
 

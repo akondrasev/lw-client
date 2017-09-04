@@ -1,59 +1,82 @@
 function Controller(navigationService, $transitions, $urlRouter, authenticationService, $state) {
     "ngInject";
 
-    if (!authenticationService.isAuthorized()) {
-        navigationService.navigateModule("login");
-    } else {
-        let preloadModule = $urlRouter.location.split("/")[1];
-        if (preloadModule) {
-            navigationService.navigateModule(preloadModule);
-        } else {
-            navigationService.navigateModule("home");
-        }
-    }
-
-    this.openedTabs = [];
-    this.leftMenu = [];
-
-    this.isLoading = navigationService.isLoading;
-
-    navigationService.getAvailableModules().then((_modules) => {
-        this.leftMenu = _modules;
-    });
-
-    this.$onInit = () => {
-
-    };
-
-    this.isAuthorized = authenticationService.isAuthorized;
-    this.logout = () => {
-        $state.go("/");
-        authenticationService.logout().then(() => {//TODO immediately hide currently opened module (it is still shown when navigating to login)
-            navigationService.navigateModule("login");
-        });
-    };
-
     $transitions.onFinish("*", (transition) => {
+        console.log("finish", transition);
         navigationService.setLoading(false);
     });
 
     $transitions.onStart("*", (transition) => {
+        console.log("start", transition);
+
         let moduleKey = transition.to().name;
         addTab(moduleKey);
+
         navigationService.setLoading(true);
     });
 
-    let addTab = (key) => {
+    if (!authenticationService.isAuthorized()) {
+        navigationService.loadModule("login").then(() => {
+            $state.go("login");
+        });
+    } else {
+        let preloadModule = $urlRouter.location.split("/")[1];
+        if (preloadModule) {
+            navigationService.loadModule(preloadModule).then(() => {
+                $state.go(preloadModule);
+            });
+        } else {
+            navigationService.loadModule("home").then(() => {
+                $state.go("home");
+            });
+        }
+    }
+
+    this.openedTabs = navigationService.getInitialOpenedTabs();
+    this.navbarItems = [];
+
+    this.isLoading = navigationService.isLoading;
+    this.isAuthorized = authenticationService.isAuthorized;
+
+    navigationService.getAvailableModules().then((_navbarItems) => {
+        this.navbarItems = _navbarItems;
+    });
+
+    this.logout = () => {
+
+        authenticationService.logout().then(() => {//TODO immediately hide currently opened module (it is still shown when navigating to login)
+            // return navigationService.loadModule("login");
+        }).then(()  => {
+            // $state.go("login");
+        });
+    };
+
+    this.openedTabs.forEach((module) => {
+       navigationService.loadModule(module.Key);
+    });
+
+
+    //navbar callback
+    this.openTab = (key) => {
+        addTab(key);
+        navigationService.loadModule(key).then(() => {
+            $state.go(key);
+        });
+    };
+
+    //tabmenu callback
+    this.closeTab = (module) => {
+        this.openedTabs = navigationService.closeModule(module);
+    };
+
+    let addTab = function (key) {
         let availableModule = navigationService.getModuleByKey(key);
 
         if (availableModule) {
             this.openedTabs = navigationService.openModule(availableModule);
         }
-    };
+    }.bind(this);
 
-    this.closeTab = (module) => {
-        this.openedTabs = navigationService.closeModule(module);
-    }
 }
 
 export default Controller;
