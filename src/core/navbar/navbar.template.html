@@ -1,6 +1,6 @@
 <nav class="left-menu">
     <ul>
-        <li ng-click="$ctrl.navigateModule('home');">
+        <li ng-click="$ctrl.onModuleChosen({key: 'home'});">
             <img src="https://www.linnworks.net/Content/Images/LeftMenu/logo.png" width="25" height="25">
 
             Linnworks
@@ -16,7 +16,7 @@
             <h4>{{block.Title}}</h4>
             <ul>
                 <li ng-repeat="item in block.Items">
-                    <a ng-click="$ctrl.clearSelection(); $ctrl.navigateModule(item.Key);">{{item.Text}}</a>
+                    <a ng-click="$ctrl.clearSelection(); $ctrl.onModuleChosen({key: item.Key});">{{item.Text}}</a>
                 </li>
             </ul>
         </div>

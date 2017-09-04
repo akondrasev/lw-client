@@ -14,8 +14,6 @@ function NavbarController($scope, clickAnywhereButHereService, navigationService
         });
     };
 
-    this.navigateModule = navigationService.navigateModule;
-
     this.clearSelection = () => {
         this.selectedItem = null;
         this.menu = null;
