@@ -1,15 +1,27 @@
 class ModulesController {
     constructor($transitions, navigationService, authenticationService, $state, $urlRouter) {
         "ngInject";
-        $transitions.onFinish("*", (transition) => {
+        $transitions.onFinish("app.*", (transition) => {
             console.log("finish", transition);
+            let moduleKey = transition.to().name;
+            console.log(moduleKey);
+
+            if (moduleKey === "app.empty") {
+                return;
+            }
+
             navigationService.setLoading(false);
         });
 
-        $transitions.onStart("*", (transition) => {
+        $transitions.onStart("app.*", (transition) => {
             console.log("start", transition);
 
             let moduleKey = transition.to().name;
+
+            if (moduleKey === "app.empty") {
+                return;
+            }
+
             addTab(moduleKey);
 
             navigationService.setLoading(true);
@@ -46,22 +58,27 @@ class ModulesController {
         };
 
         //navbar callback
-        this.openTab = (key) => {
+        this.openModule = (key) => {
+            console.log(key);
             addTab(key);
             navigationService.loadModule(key).then(() => {
-                $state.go(`app/${key}`);
+                $state.go(`app.${key}`);
             });
         };
 
         //tabmenu callback
-        this.closeTab = (module) => {
-            this.openedTabs = navigationService.closeModule(module);
+        this.closeTab = (tab) => {
+            this.openedTabs = navigationService.closeModule(tab);
         };
 
-        this.switchTab = (key) => {
-            console.log("key: ", key);
-            navigationService.loadModule(key).then(() => {
-                $state.go(`app.${key}`);
+        this.switchTab = (tab) => {
+            console.log("tab: ", tab);
+            $state.go(`app.empty`);
+
+            navigationService.setLoading(true);
+
+            navigationService.loadModule(tab.Key).then(() => {
+                $state.go(`app.${tab.Key}`);
             });
         };
 

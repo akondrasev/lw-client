@@ -1,9 +1,9 @@
 <div class="tab-menu">
     <ul>
-        <li ng-class="{active: tab.IsActive}" ng-repeat="tab in $ctrl.openedTabs" ng-click="$ctrl.onTabClick({key: tab.Key}); $ctrl.activateTab(tab);">
+        <li ng-class="{active: tab.IsActive}" ng-repeat="tab in $ctrl.openedTabs" ng-click="$ctrl.onTabClick({tab: tab}); $ctrl.activateTab(tab);">
             <a>{{tab.Text}}</a>
 
-            <button ng-click="$ctrl.onCloseClick({tab: tab});" ui-sref="empty">
+            <button ng-click="$ctrl.onCloseClick({tab: tab});">
                 <i class="fa fa-times" area-hidden="true"></i>
             </button>
         </li>

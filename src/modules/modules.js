@@ -20,7 +20,7 @@ componentsModule.config(($stateProvider) => {
     $stateProvider
         .state('app.empty', {
             url: '/empty',
-            template: "<div>EMPTY state</div>"
+            template: "<div></div>"
         });
 });
 

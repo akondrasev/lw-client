@@ -8,11 +8,11 @@ let LoginController = function (authenticationService, navigationService, $state
 
             if (tab) {
                 navigationService.loadModule(tab.Key).then(() => {
-                    $state.go(tab.Key);
+                    $state.go(`app.${tab.Key}`);
                 });
             } else {
                 navigationService.loadModule("home").then(() => {
-                    $state.go("app.empty");
+                    $state.go("app.home");
                 });
             }
         });

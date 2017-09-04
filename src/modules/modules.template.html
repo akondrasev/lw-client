@@ -1,12 +1,12 @@
 <div class="modules">
     <div class="container-flex">
         <div class="left-menu-container">
-            <navbar items="$ctrl.navbarItems" on-module-chosen="$ctrl.openTab(key);"></navbar>
+            <navbar items="$ctrl.navbarItems" on-module-chosen="$ctrl.openModule(key);"></navbar>
         </div>
 
         <div class="content-container-flex">
             <status-bar logout="$ctrl.logout();"></status-bar>
-            <tab-menu opened-tabs="$ctrl.openedTabs" on-close-click="$ctrl.closeTab(tab);" on-tab-click="$ctrl.switchTab(key);"></tab-menu>
+            <tab-menu opened-tabs="$ctrl.openedTabs" on-close-click="$ctrl.closeTab(tab);" on-tab-click="$ctrl.switchTab(tab);"></tab-menu>
             <div class="view-content">
                 <ui-view></ui-view>
                 <div ng-if="$ctrl.isLoading();" class="global-loading">
