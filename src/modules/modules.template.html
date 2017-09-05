@@ -5,7 +5,7 @@
         </div>
 
         <div class="content-container-flex">
-            <status-bar logout="$ctrl.logout();"></status-bar>
+            <status-bar refresh="$ctrl.refresh();" logout="$ctrl.logout();"></status-bar>
             <tab-menu opened-tabs="$ctrl.openedTabs" on-close-click="$ctrl.closeTab(tab);" on-tab-click="$ctrl.switchTab(tab);"></tab-menu>
             <div class="view-content">
                 <ui-view></ui-view>

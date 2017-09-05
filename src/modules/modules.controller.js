@@ -1,6 +1,13 @@
 class ModulesController {
     constructor($transitions, navigationService, authenticationService, $state, $urlRouter) {
         "ngInject";
+
+        this.openedTabs = navigationService.getInitialOpenedTabs();
+        this.navbarItems = [];
+
+        this.isLoading = navigationService.isLoading;
+        this.isAuthorized = authenticationService.isAuthorized;
+
         $transitions.onFinish("app.*", (transition) => {
             console.log("finish", transition);
             let moduleKey = transition.to().name;
@@ -9,6 +16,11 @@ class ModulesController {
             if (moduleKey === "app.empty") {
                 return;
             }
+
+            moduleKey = moduleKey.split(".")[1];
+            this.openedTabs.map((tab) => {
+                tab.IsActive = tab.Key === moduleKey;
+            });
 
             navigationService.setLoading(false);
         });
@@ -22,7 +34,7 @@ class ModulesController {
                 return;
             }
 
-            addTab(moduleKey);
+            addTab(moduleKey.split(".")[1]);
 
             navigationService.setLoading(true);
         });
@@ -34,16 +46,14 @@ class ModulesController {
                 $state.go(`app.${preloadModule}`);
             });
         } else {
-            navigationService.loadModule("home").then(() => {
-                $state.go("app.home");
-            });
+            let firstTab = this.openedTabs[0];
+            if (firstTab) {
+                navigationService.loadModule(firstTab.Key).then(() => {
+                    $state.go(`app.${firstTab.Key}`);
+                });
+            }
+
         }
-
-        this.openedTabs = navigationService.getInitialOpenedTabs();
-        this.navbarItems = [];
-
-        this.isLoading = navigationService.isLoading;
-        this.isAuthorized = authenticationService.isAuthorized;
 
         navigationService.getAvailableModules().then((_navbarItems) => {
             this.navbarItems = _navbarItems;
@@ -69,16 +79,27 @@ class ModulesController {
         //tabmenu callback
         this.closeTab = (tab) => {
             this.openedTabs = navigationService.closeModule(tab);
+
+            if (this.openedTabs[0]) {
+                this.switchTab(this.openedTabs[0]);
+            } else {
+                $state.go("app.empty");
+            }
         };
 
+        //tabmenu callback
         this.switchTab = (tab) => {
-            console.log("tab: ", tab);
-            $state.go(`app.empty`);
+            if (tab.IsActive) return;
 
+            console.log("switchTab: ", tab);
             navigationService.setLoading(true);
 
             navigationService.loadModule(tab.Key).then(() => {
-                $state.go(`app.${tab.Key}`);
+                return $state.go(`app.${tab.Key}`);
+            }).then(() => {
+                this.openedTabs.map( item => item.IsActive = false);
+                tab.IsActive = true;
+                localStorage.setItem("lastActiveTab", tab.Key);
             });
         };
 
@@ -90,6 +111,11 @@ class ModulesController {
             }
 
         }.bind(this);
+
+        this.refresh = () => {
+            console.log("refresh");
+            localStorage.clear();
+        };
     }
 }
 
