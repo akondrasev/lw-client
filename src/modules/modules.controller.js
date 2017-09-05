@@ -40,10 +40,10 @@ class ModulesController {
         });
 
         let preloadModule = $urlRouter.location.split("/")[2];
-
-        if (preloadModule && preloadModule !== "empty") {
-            navigationService.loadModule(preloadModule).then(() => {
-                $state.go(`app.${preloadModule}`);
+        let initialTab = preloadModule === "empty" ? localStorage.getItem("lastActiveTab") : preloadModule;
+        if (initialTab) {
+            navigationService.loadModule(initialTab).then(() => {
+                $state.go(`app.${initialTab}`);
             });
         } else {
             let firstTab = this.openedTabs[0];
