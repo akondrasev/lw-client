@@ -4,6 +4,7 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state, $timeout) {
     "ngInject";
 
     let loading = false;
+    let defaultTimeout = 0;
     this.isLoading = () => loading;
     this.setLoading = (value) => loading = value;
 
@@ -15,7 +16,7 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state, $timeout) {
                 let moduleName = require(`../modules/login/login`).default;
                 $ocLazyLoad.load({name: moduleName});
 
-                $timeout(1000).then(() => {
+                $timeout(defaultTimeout).then(() => {
                     defer.resolve(moduleName);
                     this.setLoading(false);
                 });
@@ -28,7 +29,7 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state, $timeout) {
             require.ensure([], () => {
                 let moduleName = require(`../modules/my-inventory/my-inventory`).default;
                 $ocLazyLoad.load({name: moduleName});
-                $timeout(1000).then(() => {
+                $timeout(defaultTimeout).then(() => {
                     defer.resolve(moduleName);
                     this.setLoading(false);
                 });
@@ -42,7 +43,7 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state, $timeout) {
             require.ensure([], () => {
                 let moduleName = require(`../modules/open-orders/open-orders`).default;
                 $ocLazyLoad.load({name: moduleName});
-                $timeout(1000).then(() => {
+                $timeout(defaultTimeout).then(() => {
                     defer.resolve(moduleName);
                     this.setLoading(false);
                 });
@@ -56,7 +57,7 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state, $timeout) {
             require.ensure([], () => {
                 let moduleName = require(`../modules/home/home`).default;
                 $ocLazyLoad.load({name: moduleName});
-                $timeout(1000).then(() => {
+                $timeout(defaultTimeout).then(() => {
                     defer.resolve(moduleName);
                     this.setLoading(false);
                 });

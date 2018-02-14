@@ -16,7 +16,7 @@ openOrdersModule.config(($stateProvider, $urlRouterProvider) => {
             resolve: {
                 items: function ($timeout) {
                     "ngInject";
-                    return $timeout(1000);
+                    return $timeout(0);
                 }
             }
         });

@@ -1,8 +1,10 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import homeComponent from './home.component';
+import testComponent from './test-directive/test-directive';
 
 let homeModule = angular.module("home", [
+    testComponent,
     uiRouter
 ]).config(($stateProvider) => {
     "ngInject";
@@ -14,12 +16,12 @@ let homeModule = angular.module("home", [
             resolve: {
                 items: function ($timeout) {
                     "ngInject";
-                    return $timeout(1000);
+                    return $timeout(0);
                 }
             }
         });
 });
 
-homeModule.component("home", homeComponent);
+homeModule.directive("home", homeComponent);
 
 export default homeModule.name;

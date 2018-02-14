@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    devtool: 'source-map',
+    // devtool: 'source-map',
 
     entry: {
         app: ['./src/app.js']
@@ -38,7 +38,7 @@ module.exports = {
             template: './src/index.ejs',
             inject: 'body',
             hash: true,
-            title: "Linnworks - DEV"
+            title: "Fake Linnworks"
         }),
 
         new webpack.HotModuleReplacementPlugin(),

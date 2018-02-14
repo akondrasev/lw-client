@@ -1,0 +1,35 @@
+<div class="test-directive">
+    <h1>Test Directive</h1>
+
+    <h4>two-way primitive value: </h4> <input type="text" ng-model="primitiveValue"/> <b>{{primitiveValue}}</b>
+    <h4>one-way primitive value: </h4> <input type="text" ng-model="oneWayValue"/> <b>{{oneWayValue}}</b>
+    <br/><br/><br/>
+
+    <h4>one-way binded object: </h4> {{objectValue}}
+    <br/>
+    <button ng-click="changeReference();" class="btn btn-primary">change reference</button>
+
+    <br/><br/><br/>
+
+    <h4>two-way binded object: </h4> {{twoWayObject}}
+    <br/>
+    <button ng-click="changeTwoWayReference();" class="btn btn-primary">change reference</button>
+
+    <br/><br/><br/>
+
+    <form>
+      <h4>Call a callback with data</h4>
+
+      <div class="form-group">
+        <label for="input#1">Input #1</label>
+        <input type="text" class="form-control" id="input#1" placeholder="input#1" ng-model="value1"/>
+      </div>
+      <div class="form-group">
+        <label for="input#2">Input #2</label>
+        <input type="text" class="form-control" id="input#2" placeholder="input#2" ng-model="value2"/>
+      </div>
+
+      <button ng-click="callback({value1: value1, value2: value2});" class="btn btn-success">call callback</button>
+    </form>
+
+</div>

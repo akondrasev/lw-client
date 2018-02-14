@@ -1,3 +1,35 @@
-<div class="home">
-    HOME
+<div class="home jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>HOME</h1>
+
+        <h4>two-way primitive value: </h4><input type="text" ng-model="primitiveValue"/><b>{{primitiveValue}}</b>
+        <h4>one-way primitive value: </h4><input type="text" ng-model="oneWayValue"/><b>{{oneWayValue}}</b>
+
+        <br/><br/><br/>
+        <h4>Home object (one-way binded):</h4> {{objectValue}}
+        <br/>
+        <button ng-click="changeReference();" class="btn btn-primary">change reference</button>
+
+        <br/><br/><br/>
+        <h4>Home object (two-way binded): </h4> {{twoWayObject}}
+        <br/>
+        <button ng-click="changeTwoWayReference();" class="btn btn-primary">change reference</button>
+
+        <br/><br/><br/>
+        <h4>Callback submit result:</h4>
+        {{callbackResult}}
+      </div>
+
+      <div class="col-md-6">
+        <test-directive
+          callback="bindedCallback(value1, value2);"
+          one-way-value="oneWayValue"
+          two-way-object="twoWayObject"
+          object-value="objectValue"
+          primitive-value="primitiveValue"></test-directive>
+      </div>
+    </div>
+  </div>
 </div>
