@@ -20,6 +20,20 @@
         <br/><br/><br/>
         <h4>Callback submit result:</h4>
         {{callbackResult}}
+
+        <br/><br/><br/>
+        <h4>Items in collection:</h4>
+
+        <table class="table table-striped">
+          <tr>
+            <th>i</th>
+            <th>item</th>
+          </tr>
+          <tr ng-repeat="item in $ctrl.collection track by $index">
+            <td>{{$index}}</td>
+            <td>{{item}}</td>
+          </tr>
+        </table>
       </div>
 
       <div class="col-md-6">

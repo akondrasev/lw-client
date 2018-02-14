@@ -10,6 +10,7 @@ import template from './test-directive.template.html';
 let directive = function () {
   return {
     template,
+    require: "^^home",
     scope: { // new scope created, isolated scope
       primitiveValue: "=",
       oneWayValue: "<",
@@ -19,8 +20,9 @@ let directive = function () {
     },
     // scope: false, // no scope created, used parent - default
     //scope: true, // new scope created, inherited from parent
-    link: function (scope) {
-      console.log(scope);
+    link: function (scope, element, attrs, homeController) {
+      console.log("directive scope:", scope);
+      console.log("homeController:", homeController);
       scope.changeReference = function () {
         scope.objectValue = {
           changedFromDirective: true
@@ -31,6 +33,10 @@ let directive = function () {
         scope.twoWayObject = {
           changedFromDirective: true
         };
+      };
+
+      scope.createItem =  function (item) {
+        homeController.addItem(item);
       };
     }
   };

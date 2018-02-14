@@ -6,8 +6,16 @@ let homeComponent = function () {
   return {
       template,
       scope: {},
+      controllerAs: "$ctrl",
+      controller: function () {
+        this.collection = [];
+        this.addItem = function (item) {
+          this.collection.push(item);
+        };
+      },
       link: function (scope) {
-        console.log(scope);
+        console.log("home scope:", scope);
+
         scope.primitiveValue = "two-way-primitive";
         scope.oneWayValue = "one-way-primitive";
         scope.objectValue = {
