@@ -1,10 +1,7 @@
 import angular from 'angular';
-import uiRouter from 'angular-ui-router';
 import loginBoxComponent from './login-box.component';
 
-let navbarModule = angular.module('loginBox', [
-    uiRouter
-]);
+let navbarModule = angular.module('loginBox', []);
 
 navbarModule.component("loginBox", loginBoxComponent);
 

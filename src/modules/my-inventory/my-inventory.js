@@ -1,9 +1,7 @@
 import angular from 'angular';
-import uiRouter from 'angular-ui-router';
 import myInventoryComponent from './my-inventory.component';
 
 let myInventoryModule = angular.module('app.myInventory', [
-    uiRouter
 ]);
 
 myInventoryModule.config(($stateProvider, $urlRouterProvider) => {

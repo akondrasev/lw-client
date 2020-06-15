@@ -1,11 +1,9 @@
 import angular from 'angular';
-import uiRouter from 'angular-ui-router';
 import homeComponent from './home.component';
 import testComponent from './test-directive/test-directive';
 
 let homeModule = angular.module("home", [
-    testComponent,
-    uiRouter
+    testComponent
 ]).config(($stateProvider) => {
     "ngInject";
 

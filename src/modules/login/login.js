@@ -1,9 +1,7 @@
 import angular from 'angular';
-import uiRouter from 'angular-ui-router';
 import loginBoxComponent from './login.component';
 
 let loginModule = angular.module('login', [
-    uiRouter
 ]).config(($stateProvider) => {
     "ngInject";
 
