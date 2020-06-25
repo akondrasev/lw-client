@@ -1,8 +1,6 @@
 import angular from 'angular';
 
 const AuthenticationService = function ($http, $q, $timeout, navigationService) {
-    "ngInject";
-
     let user = JSON.parse(localStorage.getItem("user")) || null;
 
     this.isAuthorized = () => {
@@ -39,6 +37,8 @@ const AuthenticationService = function ($http, $q, $timeout, navigationService) 
         return defer.promise;
     };
 };
+
+AuthenticationService.$inject = ["$http", "$q", "$timeout", "navigationService"];
 
 const module = angular
     .module("authenticationService", [])

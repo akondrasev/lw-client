@@ -1,8 +1,6 @@
 import angular from 'angular';
 
-const UtilsService = function ($q, $window) {
-    "ngInject";
-
+const UtilsService = function ($q) {
     this.wait = (timeout) => {
         let defer = $q.defer();
 
@@ -13,6 +11,8 @@ const UtilsService = function ($q, $window) {
         return defer.promise;
     };
 };
+
+UtilsService.$inject = ["$q"];
 
 const module = angular
     .module("utilsService", [])

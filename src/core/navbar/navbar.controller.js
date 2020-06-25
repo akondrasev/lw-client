@@ -1,6 +1,4 @@
 function NavbarController($scope, clickAnywhereButHereService, navigationService) {
-    "ngInject";
-
     this.selectItem = (item) => {
         if (this.selectedItem === item) {
             this.selectedItem = null;
@@ -23,5 +21,7 @@ function NavbarController($scope, clickAnywhereButHereService, navigationService
 
     clickAnywhereButHereService($scope, this.clearSelection);
 }
+
+NavbarController.$inject = ["$scope", "clickAnywhereButHereService", "navigationService"];
 
 export default NavbarController;

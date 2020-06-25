@@ -10,8 +10,6 @@ import angular from 'angular';
  * @constructor
  */
 const ClickAnywhereButHereService = function ($document) {
-    "ngInject";
-
     let tracker = [];
 
     return function($scope, expr) {
@@ -38,6 +36,8 @@ const ClickAnywhereButHereService = function ($document) {
         return t;
     };
 };
+
+ClickAnywhereButHereService.$inject = ["$document"];
 
 const module = angular
     .module("clickAnywhereButHereService", [])

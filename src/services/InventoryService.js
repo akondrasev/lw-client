@@ -1,8 +1,6 @@
 import angular from 'angular';
 
-const InventoryService = function ($http, $q) {
-    "ngInject";
-
+const InventoryService = function ($http) {
     const url = "http://localhost:44303/api/Inventory/GetInventoryItems";
     const configs = {
         headers: {
@@ -25,6 +23,8 @@ const InventoryService = function ($http, $q) {
     };
 
 };
+
+InventoryService.$inject = ["$http"];
 
 const module = angular
     .module("inventoryService", [])

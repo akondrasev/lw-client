@@ -1,8 +1,6 @@
 import angular from 'angular';
 
 const NavigationService = function ($http, $q, $ocLazyLoad, $state, $timeout) {
-    "ngInject";
-
     let loading = false;
     let defaultTimeout = 0;
     this.isLoading = () => loading;
@@ -176,6 +174,8 @@ const NavigationService = function ($http, $q, $ocLazyLoad, $state, $timeout) {
         return components[key]();
     };
 };
+
+NavigationService.$inject = ["$http", "$q", "$ocLazyLoad", "$state", "$timeout"];
 
 const module = angular
     .module("navigationService", [])

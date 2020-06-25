@@ -5,56 +5,51 @@
   "main": "index.js",
   "scripts": {
     "build": "node_modules/.bin/webpack --config webpack.config.js --display-reasons --display-chunks",
-    "server": "node_modules/.bin/webpack-dev-server --config webpack.config.dev.js --content-base / --open-page / --inline --color --port 80"
+    "server": "node_modules/.bin/webpack-dev-server --config webpack.config.dev.js --content-base / --inline --color --port 80"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.6.5",
-    "@uirouter/angularjs": "latest",
-    "@uirouter/core": "latest",
-    "bootstrap": "4.5.0",
+    "angular": "^1.8.0",
+    "@uirouter/angularjs": "^1.0.26",
+    "@uirouter/core": "^6.0.5",
+    "bootstrap": "^4.5.0",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.1",
     "oclazyload": "^1.1.0",
-    "popper.js": "^1.12.2"
+    "popper.js": "^1.16.1"
   },
   "devDependencies": {
     "@types/angular": "^1.7.0",
-    "babel": "^6.23.0",
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.1",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "bootstrap-webpack": "0.0.6",
-    "clean-webpack-plugin": "^0.1.16",
-    "css-loader": "^0.28.4",
-    "file-loader": "^0.11.2",
-    "html-webpack-plugin": "^2.30.1",
-    "imports-loader": "^0.7.1",
-    "less": "^2.7.2",
-    "less-loader": "^4.0.5",
-    "ng-annotate-loader": "^0.6.1",
+    "@babel/core": "^7.10.3",
+    "@babel/plugin-transform-runtime": "^7.10.3",
+    "@babel/runtime": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "babel-loader": "^8.1.0",
+    "bootstrap-webpack": "^0.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.6.0",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "imports-loader": "^1.1.0",
+    "less": "^3.11.3",
+    "less-loader": "^6.1.2",
     "node-sass": "4.14.1",
-    "raw-loader": "^0.5.1",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.18.2",
-    "uglify-js": "^3.0.27",
-    "uglifyjs-webpack-plugin": "^0.4.6",
-    "url-loader": "^0.5.9",
-    "webpack": "^3.5.1",
-    "webpack-dev-server": "^2.7.1",
+    "raw-loader": "^4.0.1",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "uglify-js": "^3.10.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
     "webpack-server": "^0.1.2"
   },
   "babel": {
-    "plugins": [
-      "transform-runtime"
-    ],
     "presets": [
-      "es2015",
-      "stage-0"
+      "@babel/preset-env"
     ]
   }
 }

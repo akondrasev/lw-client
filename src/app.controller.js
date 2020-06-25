@@ -1,6 +1,4 @@
 function Controller(navigationService, $transitions, $urlRouter, authenticationService, $state) {
-    "ngInject";
-
     if (!authenticationService.isAuthorized()) {
         navigationService.navigateModule("login");
     } else {
@@ -55,5 +53,13 @@ function Controller(navigationService, $transitions, $urlRouter, authenticationS
         this.openedTabs = navigationService.closeModule(module);
     }
 }
+
+Controller.$inject = [
+    "navigationService",
+    "$transitions",
+    "$urlRouter",
+    "authenticationService",
+    "$state"
+];
 
 export default Controller;

@@ -5,20 +5,17 @@ import testComponent from './test-directive/test-directive';
 let homeModule = angular.module("home", [
     testComponent,
     homeComponent
-]).config(($stateProvider) => {
-    "ngInject";
-
+]).config(["$stateProvider", ($stateProvider) => {
     $stateProvider
         .state('home', {
             url: '/home',
             component: 'home',
             resolve: {
-                items: function ($timeout) {
-                    "ngInject";
+                items: ["$timeout", function ($timeout) {
                     return $timeout(0);
-                }
+                }]
             }
         });
-});
+}]);
 
 export default homeModule.name;

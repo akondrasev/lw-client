@@ -52,14 +52,6 @@ module.exports = {
             }
         }),
 
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: function (module, count) {
-                return module.resource
-                    && (module.resource.indexOf(path.resolve(__dirname, 'src')) === -1);
-            }
-        }),
-
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",

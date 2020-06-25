@@ -17,9 +17,7 @@ angular.module('app', [
     Services,
     Components,
     LazyLoad
-]).config(($locationProvider, $compileProvider, $urlRouterProvider, $stateProvider) => {
-    "ngInject";
-
+]).config(["$locationProvider", "$compileProvider", "$urlRouterProvider", "$stateProvider" , ($locationProvider, $compileProvider, $urlRouterProvider, $stateProvider) => {
     $compileProvider.debugInfoEnabled(false);
 
     // $urlRouterProvider.otherwise(($injector, $location) => {
@@ -36,4 +34,4 @@ angular.module('app', [
     // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
     // #how-to-configure-your-server-to-work-with-html5mode
     // $locationProvider.html5Mode(true).hashPrefix('!');
-}).component('app', AppComponent);
+}]).component('app', AppComponent);
