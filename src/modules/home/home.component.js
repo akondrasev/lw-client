@@ -44,6 +44,10 @@ let homeComponent = function () {
             value2: value2
           };
         };
+
+        scope.changeTwoWayProperty = function () {
+            scope.twoWayObject.addedProperty = "prop value";
+        };
       }
   };
 };
