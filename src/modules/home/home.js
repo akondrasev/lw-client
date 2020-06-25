@@ -3,7 +3,8 @@ import homeComponent from './home.component';
 import testComponent from './test-directive/test-directive';
 
 let homeModule = angular.module("home", [
-    testComponent
+    testComponent,
+    homeComponent
 ]).config(($stateProvider) => {
     "ngInject";
 
@@ -19,7 +20,5 @@ let homeModule = angular.module("home", [
             }
         });
 });
-
-homeModule.directive("home", homeComponent);
 
 export default homeModule.name;

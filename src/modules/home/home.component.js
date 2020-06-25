@@ -1,55 +1,58 @@
 import template from './home.template.html';
 import './home.style.scss';
 
-
-let homeComponent = function () {
-  return {
-      template,
-      scope: {},
-      controllerAs: "$ctrl",
-      controller: function () {
+class HomeComponent {
+    constructor() {
         this.collection = [];
-        this.addItem = function (item) {
-          this.collection.push(item);
-        };
-      },
-      link: function (scope) {
-        console.log("home scope:", scope);
 
-        scope.primitiveValue = "two-way-primitive";
-        scope.oneWayValue = "one-way-primitive";
-        scope.objectValue = {
-          testProperty: "555",
-          number: 5,
-          boolean: false
+        this.objectValue = {
+            testProperty: "555",
+            number: 5,
+            boolean: false
         };
 
-        scope.twoWayObject = {
-          property: 555
+        this.twoWayObject = {
+            property: 555
         };
 
-        scope.changeReference = function () {
-            scope.objectValue = { changedFromParent: true };
-        };
+        this.primitiveValue = "two-way-primitive";
+        this.oneWayValue = "one-way-primitive";
+    }
 
-        scope.changeTwoWayReference = function () {
-          scope.twoWayObject = {
+    addItem(item) {
+        this.collection.push(item);
+    }
+
+    changeReference () {
+        this.objectValue = { changedFromParent: true };
+    }
+
+    changeTwoWayReference () {
+        this.twoWayObject = {
             changedFromParent: true
-          };
         };
+    }
 
-        scope.bindedCallback = function (value1, value2) {
-          scope.callbackResult = {
+    bindedCallback (value1, value2) {
+        this.callbackResult = {
             value1: value1,
             value2: value2
-          };
         };
+    }
 
-        scope.changeTwoWayProperty = function () {
-            scope.twoWayObject.addedProperty = "prop value";
-        };
-      }
-  };
+    changeTwoWayProperty () {
+        this.twoWayObject.addedProperty = "prop value";
+    }
+}
+
+
+let homeComponent = {
+    template,
+    controller: HomeComponent
 };
 
-export default homeComponent;
+const ngModule = angular
+    .module("homeComponent", [])
+    .component("home", homeComponent);
+
+export default ngModule.name;
